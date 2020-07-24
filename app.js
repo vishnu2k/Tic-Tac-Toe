@@ -7,7 +7,7 @@ app.use(require("express-session")({
 }));
 
 app.get("/",function(req,res){
-	res.sendFile(__dirname +'/game.html');
+	res.sendFile('game.html');
 });
 
 app.listen(process.env.PORT || 3000,process.env.IP,function(){
