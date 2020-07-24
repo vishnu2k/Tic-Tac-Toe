@@ -45,7 +45,7 @@
 			
 				<div class="row">
 					<div class="col-lg-4 col-xs-4" style="background:#8c9cda;height:100%">
-                        <img src="https://image.freepik.com/free-vector/robot-businessman-robots-vs-human-future-replacement-conflict-ai-artificial-intelligence-vector-illustration_53562-8001.jpg"
+                        <img style="width:100%;height:380px;" src="https://image.freepik.com/free-vector/robot-businessman-robots-vs-human-future-replacement-conflict-ai-artificial-intelligence-vector-illustration_53562-8001.jpg"
                         height="400" width="580">
 						<div class="container" style="margin-left:15%">
 							
@@ -109,11 +109,7 @@
 		</script>
 		
 		<script type="text/javascript">
-				// Tic Tac Toe AI with Minimax Algorithm
-// The Coding Train / Daniel Shiffman
-// https://thecodingtrain.com/CodingChallenges/154-tic-tac-toe-minimax.html
-// https://youtu.be/I64-UTORVfU
-// https://editor.p5js.org/codingtrain/sketches/0zyUhZdJD
+		
 			
 let choice=0;
 let board = [
@@ -122,8 +118,8 @@ let board = [
   ['', '', '']
 ];
 
-let w; // = width / 3;
-let h; // = height / 3;
+let w; 
+let h; 
 
 let ai = 'X';
 let human = 'O';
@@ -139,10 +135,10 @@ function newGame()
   ['', '', '']
 ];
 
-let w; // = width / 3;
-let h; // = height / 3;
+let w; 
+let h; 
 	
-//console.log(choice);
+
 
 let ai = 'X';
 let human = 'O';
@@ -150,14 +146,12 @@ let human = 'O';
 if(choice==0){
 	currentPlayer = human;
   winner = null;
-	//$("div:eq(5)").remove();
 	setup();
   draw();
 }
 else{
 	currentPlayer = ai;
   winner = null;
-	//$("div:eq(5)").remove();
 	setup();
   draw();
 }
@@ -175,13 +169,12 @@ function curAi(){
 	setup();
 }		
 var cnv;
-function setup() { //curfor current player
+function setup() { 
   cnv=createCanvas(500, 500);
   w = width / 3;
   h = height / 3;
   cnv.position(700, 60);	
   draw1();
-  //bestMove();
   if(currentPlayer==ai){
   board[getRndInteger(0,2)][getRndInteger(0,2)]=ai;
   currentPlayer=human;
@@ -198,7 +191,6 @@ function equals3(a, b, c) {
 function checkWinner() {
   let winner = null;
 
-  // horizontal
   for (let i = 0; i < 3; i++) {
     if (equals3(board[i][0], board[i][1], board[i][2])) {
       winner = board[i][0];
@@ -206,7 +198,7 @@ function checkWinner() {
     }
   }
 
-  // Vertical
+
   for (let i = 0; i < 3; i++) {
     if (equals3(board[0][i], board[1][i], board[2][i])) {
       winner = board[0][i];
@@ -214,7 +206,7 @@ function checkWinner() {
     }
   }
 
-  // Diagonal
+  
   if (equals3(board[0][0], board[1][1], board[2][2])) {
     winner = board[0][0];
     return winner;
@@ -242,19 +234,19 @@ function checkWinner() {
 
 function mousePressed() {
   if (currentPlayer == human) {
-    // Human make turn
+    
     
     let i = floor(mouseX / w);
     let j = floor(mouseY / h);
 
-    // If valid turn
+    
     if (board[i][j] == '' && checkWinner()==null) {
       board[i][j] = human;
       currentPlayer = ai;
       bestMove();
       draw1();
     }
-    console.log('pressed',board);
+    
   }
 }
 
@@ -330,13 +322,13 @@ function depthU(){
 			
 function bestMove() {
   if(checkWinner()==null){
-    // AI to make its turn
+    
   let bestScore = -Infinity;
   let move;
   let l=0;
   for (let i = 0; i < 3; i++) {
     for (let j = 0; j < 3; j++) {
-      // Is the spot available?
+      
       if (board[i][j] == '' && l<lvl) {
         l=l+1;
         board[i][j] = ai;
@@ -369,7 +361,6 @@ function minimax(board, depth, isMaximizing,alpha,beta) {
     let bestScore = -Infinity;
     for (let i = 0; i < 3; i++) {
       for (let j = 0; j < 3; j++) {
-        // Is the spot available?
         if (board[i][j] == '') {
           board[i][j] = ai;
           let score = minimax(board, depth + 1, false,alpha,beta);
@@ -387,7 +378,6 @@ function minimax(board, depth, isMaximizing,alpha,beta) {
     let bestScore = Infinity;
     for (let i = 0; i < 3; i++) {
       for (let j = 0; j < 3; j++) {
-        // Is the spot available?
         if (board[i][j] == '') {
           board[i][j] = human;
           let score = minimax(board, depth + 1, true,alpha,beta);
